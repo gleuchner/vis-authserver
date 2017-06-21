@@ -26,7 +26,7 @@ public class AuthorizationServer extends
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security.checkTokenAccess("isAuthenticated()");
+        security.checkTokenAccess("permitAll()");
     }
 
     @Override
