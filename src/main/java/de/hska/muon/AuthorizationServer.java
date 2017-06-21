@@ -25,14 +25,14 @@ public class AuthorizationServer extends
     private AuthenticationManager authenticationManager;
 
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.authenticationManager(authenticationManager);
-        endpoints.userDetailsService(userDetailsService); // Inject custom
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        security.checkTokenAccess("isAuthenticated()");
     }
 
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security.checkTokenAccess("isAuthenticated()");
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints.authenticationManager(authenticationManager);
+        endpoints.userDetailsService(userDetailsService); // Inject custom
     }
 
     @Override
