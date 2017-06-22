@@ -154,17 +154,14 @@ public class User {
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class User {\n");
-    
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
-    sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    role: ").append(toIndentedString(role)).append("\n");
-    sb.append("}");
-    return sb.toString();
+    return "User{" +
+            "userId=" + userId +
+            ", firstname='" + firstname + '\'' +
+            ", name='" + name + '\'' +
+            ", username='" + username + '\'' +
+            ", password='" + password + '\'' +
+            ", role=" + role +
+            '}';
   }
 
   /**

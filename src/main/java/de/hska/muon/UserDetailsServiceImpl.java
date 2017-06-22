@@ -17,7 +17,7 @@ import java.util.Collection;
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    private static final String USER_SERVICE_URL = "http://user-service/users";
+    private static final String USER_SERVICE_URL = "http://user:8082/users";
 
     private final RestTemplate restTemplate;
 
@@ -39,7 +39,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     private User[] getUsers() {
-        return restTemplate.getForObject(USER_SERVICE_URL, User[].class);
+
+        User[] users = restTemplate.getForObject(USER_SERVICE_URL, User[].class);
+        System.out.println("Users:\n" + users);
+        return users;
     }
 
     class UserDetailsImpl implements UserDetails {
