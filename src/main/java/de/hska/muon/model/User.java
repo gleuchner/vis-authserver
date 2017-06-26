@@ -12,13 +12,13 @@ public class User {
   @JsonProperty("userId")
   private Integer userId;
 
-  @JsonProperty("firstName")
+  @JsonProperty("firstname")
   private String firstname;
 
   @JsonProperty("name")
   private String name;
 
-  @JsonProperty("userName")
+  @JsonProperty("username")
   private String username;
 
   @JsonProperty("password")
