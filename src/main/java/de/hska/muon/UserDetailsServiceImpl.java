@@ -11,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by gerrit on 21.06.17.
@@ -55,7 +56,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         @Override
         public Collection<? extends GrantedAuthority> getAuthorities() {
-            return new ArrayList<>();
+            List<GrantedAuthority> ret = new ArrayList<>();
+            ret.add(TRUST);
+            ret.add(READ);
+            if(_user.getRole() == 2) {
+                ret.add(WRITE);
+            }
+            return ret;
         }
 
         @Override
@@ -88,4 +95,25 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             return true;
         }
     }
+
+    public final GrantedAuthority READ = new GrantedAuthority() {
+        @Override
+        public String getAuthority() {
+            return "read";
+        }
+    };
+
+    public final GrantedAuthority WRITE = new GrantedAuthority() {
+        @Override
+        public String getAuthority() {
+            return "write";
+        }
+    };
+
+    public final GrantedAuthority TRUST = new GrantedAuthority() {
+        @Override
+        public String getAuthority() {
+            return "trust";
+        }
+    };
 }
